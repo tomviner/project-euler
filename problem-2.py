@@ -17,7 +17,21 @@ def fib():
     """
     d = deque([1], maxlen=2)
     while True:
-        d.append(sum(d))
-        yield d[-1]
+        last_two = sum(d)
+        yield last_two
+        d.append(last_two)
 
+def even_fibs(limit=4000000):
+    """
+    >>> even_fibs(89) # 2 + 8 + 34
+    44
+    """
+    total = 0
+    for n in fib():
+        if limit < n:
+            return total
+        if not n % 2:
+            # print n
+            total += n
 
+print even_fibs()
