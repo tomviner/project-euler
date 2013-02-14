@@ -31,7 +31,6 @@ def even_fibs(limit=4000000):
         if limit < n:
             return total
         if not n % 2:
-            # print n
             total += n
 
 print even_fibs()
