@@ -49,7 +49,6 @@ def read_grid(grid_string):
     nums = [int(num) if num.isdigit() else num for num in nums]
     return nums, len(lines[0].split())
 
-
 def get_lines(grid, row_len, index, length):
     r"""
     >>> grid, n = read_grid('\n 11 12 13  \n14 15 16\n  17\t18 19')
@@ -67,7 +66,6 @@ def get_lines(grid, row_len, index, length):
         if NL in line or len(line) < length:
             continue
         yield line
-
 
 def get_line_products(grid, row_len, length=4):
     r"""

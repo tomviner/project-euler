@@ -69,9 +69,9 @@ def get_line_products(grid, length=4):
     product = lambda ns: reduce(operator.mul, ns)
     directions = itertools.product((-1, 0, 1), repeat=2)
     # but remove (0, 0)
-    directions = (d for d in directions if d != (0, 0))
-    for dx, dy in directions:
-        for (x, y), val in grid.items():
+    directions = [d for d in directions if d != (0, 0)]
+    for (x, y), val in grid.items():
+        for dx, dy in directions:
             try:
                 yield product(get_line(grid, x, y, dx, dy, length))
             except ImpossibleLineError:
