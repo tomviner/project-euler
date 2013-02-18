@@ -41,13 +41,13 @@ NL = '|'
 def read_grid(grid_string):
     r"""
     >>> read_grid('\n 11 12 13  \n14 15 16\n  17\t18 19\n\t ')
-    ([11, 12, 13, '|', 14, 15, 16, '|', 17, 18, 19], 3)
+    ([11, 12, 13, '|', 14, 15, 16, '|', 17, 18, 19], 4)
     """
     lines = grid_string.strip().splitlines()
     sep = ' %s ' % NL
     nums = sep.join(lines).split()
     nums = [int(num) if num.isdigit() else num for num in nums]
-    return nums, len(lines[0].split())
+    return nums, len(lines[0].split()) + 1 # account for our separator
 
 def get_lines(grid, row_len, index, length):
     r"""
@@ -60,7 +60,8 @@ def get_lines(grid, row_len, index, length):
     >>> list(get_lines(grid, n, 134, 4))
     [[26, 38, 40, 67], [26, 20, 99, 0], [26, 95, 97, 20], [26, 63, 78, 14]]
     """
-    for skip in 1, row_len-1+1, row_len+1, row_len+1+1:
+    # right, down-left, down,
+    for skip in 1, row_len-1, row_len, row_len+1:
         stop = index + skip*length
         line = grid[index:stop:skip]
         if NL in line or len(line) < length:
