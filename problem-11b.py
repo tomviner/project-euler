@@ -28,54 +28,58 @@ GRID = """\
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48\
 """
+
+"""
+Another way to think about it is with one long list and use slice[:skip]
+with skips in None, R, R-1, R+1; where R is the row length
+"""
 import itertools
 import operator
 
+NL = '|'
+
 def read_grid(grid_string):
     r"""
-    >>> sorted(read_grid('11 12 13\n14 15 16\n17 18 19').items(), key=lambda xy_val:xy_val[0][::-1])
-    [((0, 0), 11), ((1, 0), 12), ((2, 0), 13), ((0, 1), 14), ((1, 1), 15), ((2, 1), 16), ((0, 2), 17), ((1, 2), 18), ((2, 2), 19)]
+    >>> read_grid('\n 11 12 13  \n14 15 16\n  17\t18 19\n\t ')
+    ([11, 12, 13, '|', 14, 15, 16, '|', 17, 18, 19], 3)
     """
-    return {(x, y):int(val) for y,row in enumerate(grid_string.splitlines()) for x,val in enumerate(row.strip().split())}
-
-class ImpossibleLineError(ValueError):
-    pass
-
-def get_line(grid, x, y, dx, dy, length):
-    """
-    >>> grid = read_grid(GRID)
-    >>> list(get_line(grid, 8, 6, 1, 1, 4))
-    [26, 63, 78, 14]
-    >>> list(get_line(grid, 2, 3, -1, -1, 4))
-    Traceback (most recent call last):
-        ...
-    ImpossibleLineError: (-1, 0)
-    """
-    for i in range(length):
-        try:
-            yield grid[(i*dx+x, i*dy+y)]
-        except KeyError, e:
-            raise ImpossibleLineError(e)
+    lines = grid_string.strip().splitlines()
+    sep = ' %s ' % NL
+    nums = sep.join(lines).split()
+    nums = [int(num) if num.isdigit() else num for num in nums]
+    return nums, len(lines[0].split())
 
 
-def get_line_products(grid, length=4):
+def get_lines(grid, row_len, index, length):
     r"""
-    >>> grid = read_grid('2 3\n4 5')
-    >>> sorted(set((get_line_products(grid, length=2))))
+    >>> grid, n = read_grid('\n 11 12 13  \n14 15 16\n  17\t18 19')
+    >>> list(get_lines(grid, n, 0, 3))
+    [[11, 12, 13], [11, 14, 17], [11, 15, 19]]
+    >>> list(get_lines(grid, n, 8, 3))
+    [[17, 18, 19]]
+    >>> grid, n = read_grid(GRID)
+    >>> list(get_lines(grid, n, 134, 4))
+    [[26, 38, 40, 67], [26, 20, 99, 0], [26, 95, 97, 20], [26, 63, 78, 14]]
+    """
+    for skip in 1, row_len-1+1, row_len+1, row_len+1+1:
+        stop = index + skip*length
+        line = grid[index:stop:skip]
+        if NL in line or len(line) < length:
+            continue
+        yield line
+
+
+def get_line_products(grid, row_len, length=4):
+    r"""
+    >>> grid, n = read_grid('2 3\n4 5')
+    >>> sorted(set(get_line_products(grid, n, 2)))
     [6, 8, 10, 12, 15, 20]
-    >>> reduce(operator.mul, (26, 63, 78, 14))
-    1788696
     """
     product = lambda ns: reduce(operator.mul, ns)
-    directions = itertools.product((-1, 0, 1), repeat=2)
-    # but remove (0, 0)
-    directions = (d for d in directions if d != (0, 0))
-    for dx, dy in directions:
-        for (x, y), val in grid.items():
-            try:
-                yield product(get_line(grid, x, y, dx, dy, length))
-            except ImpossibleLineError:
-                continue
+    for i, _ in enumerate(grid):
+        for line in get_lines(grid, row_len, i, length):
+            yield product(line)
 
-grid = read_grid(GRID)
-print max(get_line_products(grid))
+
+grid, n = read_grid(GRID)
+print max(get_line_products(grid, n))
