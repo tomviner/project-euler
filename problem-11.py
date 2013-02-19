@@ -29,7 +29,6 @@ GRID = """\
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48\
 """
 import itertools
-import operator
 
 def read_grid(grid_string):
     r"""
@@ -63,10 +62,7 @@ def get_line_products(grid, length=4):
     >>> grid = read_grid('2 3\n4 5')
     >>> sorted(set((get_line_products(grid, length=2))))
     [6, 8, 10, 12, 15, 20]
-    >>> reduce(operator.mul, (26, 63, 78, 14))
-    1788696
     """
-    product = lambda ns: reduce(operator.mul, ns)
     directions = itertools.product((-1, 0, 1), repeat=2)
     # but remove (0, 0)
     directions = [d for d in directions if d != (0, 0)]
