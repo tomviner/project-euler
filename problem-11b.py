@@ -60,7 +60,7 @@ def get_lines(grid, row_len, index, length):
     >>> list(get_lines(grid, n, 134, 4))
     [[26, 38, 40, 67], [26, 20, 99, 0], [26, 95, 97, 20], [26, 63, 78, 14]]
     """
-    # right, down-left, down,
+    # right, down-left, down, down-right
     for skip in 1, row_len-1, row_len, row_len+1:
         stop = index + skip*length
         line = grid[index:stop:skip]
