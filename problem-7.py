@@ -16,4 +16,5 @@ def nth_prime(n):
     """
     return list(itertools.islice(primes(n=n), n-1, n))[0]
 
-print nth_prime(10001)
+if __name__ == '__main__':
+    print nth_prime(10001)

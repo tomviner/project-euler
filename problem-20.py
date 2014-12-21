@@ -15,4 +15,5 @@ def fac_sum(n):
     """
     return sum(map(int, str(factorial(n))))
 
-print fac_sum(100)
+if __name__ == '__main__':
+    print fac_sum(100)

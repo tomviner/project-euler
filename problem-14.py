@@ -72,5 +72,6 @@ def smart_chain_len(n, cache={}):
         cache[d] = j + 1
     return cache[n]
 
-# takes just 21s
-print max(xrange(1, 1000000), key=smart_chain_len)
+if __name__ == '__main__':
+    # takes just 21s
+    print max(xrange(1, 1000000), key=smart_chain_len)

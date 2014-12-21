@@ -31,4 +31,5 @@ def diff(n):
     """
     return square_of_sum(n) - sum_of_squares(n)
 
-print diff(100)
+if __name__ == '__main__':
+    print diff(100)

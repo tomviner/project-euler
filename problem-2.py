@@ -33,4 +33,5 @@ def even_fibs(limit=4000000):
         if not n % 2:
             total += n
 
-print even_fibs()
+if __name__ == '__main__':
+    print even_fibs()

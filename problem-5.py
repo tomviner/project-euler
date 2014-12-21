@@ -16,7 +16,7 @@ def divisible_by_range(x, n):
     >>> divisible_by_range(1000, 10)
     False
     """
-    for i in xrange(n, 1, -1): # fail quicker by starting high
+    for i in xrange(n, 1, -1):  # fail quicker by starting high
         if x % i:
             return False
     return True
@@ -43,5 +43,5 @@ def smallest_dividible(n):
             factors[fac] = max(count, factors[fac])
     return product(fac**count for (fac, count) in factors.items())
 
-for i in range(2, 21):
-    print i, smallest_dividible(i)
+if __name__ == '__main__':
+    print smallest_dividible(20)

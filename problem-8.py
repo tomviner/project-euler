@@ -42,4 +42,5 @@ def largest_product(s, l):
     """
     return max(product(map(int, list(sub))) for sub in get_sub_strings(s, l))
 
-print largest_product(digit_string, 5)
+if __name__ == '__main__':
+    print largest_product(digit_string, 5)

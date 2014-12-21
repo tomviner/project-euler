@@ -34,7 +34,8 @@ Another way to think about it is with one long list and use slice[:skip]
 with skips in None, R, R-1, R+1; where R is the row length
 """
 import itertools
-import operator
+
+from common import *
 
 NL = '|'
 
@@ -74,11 +75,11 @@ def get_line_products(grid, row_len, length=4):
     >>> sorted(set(get_line_products(grid, n, 2)))
     [6, 8, 10, 12, 15, 20]
     """
-    product = lambda ns: reduce(operator.mul, ns)
     for i, _ in enumerate(grid):
         for line in get_lines(grid, row_len, i, length):
             yield product(line)
 
 
-grid, n = read_grid(GRID)
-print max(get_line_products(grid, n))
+if __name__ == '__main__':
+    grid, n = read_grid(GRID)
+    print max(get_line_products(grid, n))

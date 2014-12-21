@@ -30,6 +30,8 @@ GRID = """\
 """
 import itertools
 
+from common import *
+
 def read_grid(grid_string):
     r"""
     >>> sorted(read_grid('11 12 13\n14 15 16\n17 18 19').items(), key=lambda xy_val:xy_val[0][::-1])
@@ -73,5 +75,6 @@ def get_line_products(grid, length=4):
             except ImpossibleLineError:
                 continue
 
-grid = read_grid(GRID)
-print max(get_line_products(grid))
+if __name__ == '__main__':
+    grid = read_grid(GRID)
+    print max(get_line_products(grid))

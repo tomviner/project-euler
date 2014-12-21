@@ -104,5 +104,6 @@ NUMBERS = """
 53503534226472524250874054075591789781264330331690
 """.strip().splitlines()
 
-total = sum(map(int, NUMBERS))
-print str(total)[:10]
+if __name__ == '__main__':
+    total = sum(map(int, NUMBERS))
+    print str(total)[:10]

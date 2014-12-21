@@ -37,4 +37,5 @@ def palindrome_products(digits):
         if is_palindrome(product):
             yield product
 
-print max(palindrome_products(3))
+if __name__ == '__main__':
+    print max(palindrome_products(3))

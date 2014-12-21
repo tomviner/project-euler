@@ -13,5 +13,8 @@ def nth_perm(n, digits):
     '210'
     """
     return ''.join(map(str,
-        islice(permutations(range(digits)), n-1, n).next())
+        islice(sorted(permutations(range(digits))), n-1, n).next())
     )
+
+if __name__ == '__main__':
+    print nth_perm(1000000, 10)

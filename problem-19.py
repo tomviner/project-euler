@@ -23,4 +23,5 @@ def count_months(yr_min, yr_max):
             d = datetime.date(yr, mn, 1)
             yield d.weekday() == 6
 
-print sum(count_months(1901, 2000))
+if __name__ == '__main__':
+    print sum(count_months(1901, 2000))

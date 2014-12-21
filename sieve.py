@@ -10,5 +10,6 @@ def sieve(ns):
     for item in itertools.ifilter(lambda x: x % n != 0, ns):
         yield item
 
-ps = sieve(itertools.count(2))
-print list(itertools.islice(ps, 100))
+if __name__ == '__main__':
+    ps = sieve(itertools.count(2))
+    print list(itertools.islice(ps, 100))
