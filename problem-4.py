@@ -1,5 +1,6 @@
 """
-A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 x 99.
+A palindromic number reads the same both ways.
+The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 x 99.
 
 Find the largest palindrome made from the product of two 3-digit numbers.
 """
@@ -15,7 +16,8 @@ def is_palindrome(n):
     False
     """
     s = str(n)
-    m = int(math.floor(len(s)/2.0))
+    m = int(math.floor(len(s) / 2.0))
+    # compare 1st half to reverse of 2nd half
     return s[:m] == s[:-m-1:-1]
 
 def product_pairs(max_n):

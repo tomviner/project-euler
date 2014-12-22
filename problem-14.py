@@ -7,7 +7,8 @@ n --> 3n + 1 (n is odd)
 Using the rule above and starting with 13, we generate the following sequence:
 
 13 --> 40 --> 20 --> 10 --> 5 --> 16 --> 8 --> 4 --> 2 --> 1
-It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms. Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at 1.
+It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms.
+Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at 1.
 
 Which starting number, under one million, produces the longest chain?
 
@@ -36,7 +37,7 @@ def chain_len(n):
     # count input in chain
     return 1 + sum(1 for x in collatz(n))
 
-# takes 2m22s
+# takes 2m22s on netbook, 30s on 4core laptop
 # print max(xrange(1, 1000000), key=chain_len)
 
 def inclusive_collatz(n):
@@ -61,17 +62,17 @@ def smart_chain_len(n, cache={}):
     """
     seq = []
     # walk tree until a known value found
-    for i, c in enumerate(inclusive_collatz(n)):
+    for c in inclusive_collatz(n):
         if c in cache:
             break
         else:
             seq.append(c)
     # mark all new values, with count, starting with
     # either 1 or the known value found above
-    for j, d in enumerate(reversed(seq), cache.get(c, 0)):
-        cache[d] = j + 1
+    for i, d in enumerate(reversed(seq), cache.get(c, 0)):
+        cache[d] = i + 1
     return cache[n]
 
-if __name__ == '__main__':
-    # takes just 21s
+# if __name__ == '__main__':
+#     # takes just 21s on netbook, 3s on 4 core laptop
     print max(xrange(1, 1000000), key=smart_chain_len)

@@ -24,5 +24,5 @@ def pyth_trips(max_val):
 
 if __name__ == '__main__':
     for a, b, c in pyth_trips(1000):
-        if a+b+c == 1000:
-            print a*b*c
+        if a + b + c == 1000:
+            print a * b * c

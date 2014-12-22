@@ -2,6 +2,7 @@ import math
 import itertools
 import operator
 
+
 def product(ns):
     """
     >>> product((26, 63, 78, 14))
@@ -21,6 +22,7 @@ def is_prime(n=100):
     if n == 2:
         return True
     top = int(math.ceil(math.sqrt(n)))
+    # 2, 3, 5, 7, 9, 11, ... top
     for i in [2]+range(3, top+1, 2):
         if not n % i:
             return False
@@ -34,7 +36,7 @@ def primes(max_val=None, n=None):
     [2, 3, 5, 7, 11, 13, 17, 19, 23]
     """
     prime_gen = itertools.ifilter(is_prime, itertools.count(1))
-    prime_gen = itertools.takewhile(lambda x:max_val is None or x<=max_val, prime_gen)
+    prime_gen = itertools.takewhile(lambda x: max_val is None or x <= max_val, prime_gen)
     return itertools.islice(prime_gen, n)
 
 def prime_factors(n):
