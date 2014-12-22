@@ -1,7 +1,7 @@
 """
 Find the greatest product of five consecutive digits in the 1000-digit number.
 """
-from common import *
+from common import product
 
 digit_string = """
     73167176531330624919225119674426574742355349194934

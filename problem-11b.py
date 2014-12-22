@@ -33,9 +33,7 @@ GRID = """\
 Another way to think about it is with one long list and use slice[:skip]
 with skips in None, R, R-1, R+1; where R is the row length
 """
-import itertools
-
-from common import *
+from common import product
 
 NL = '|'
 
@@ -48,7 +46,7 @@ def read_grid(grid_string):
     sep = ' %s ' % NL
     nums = sep.join(lines).split()
     nums = [int(num) if num.isdigit() else num for num in nums]
-    return nums, len(lines[0].split()) + 1 # account for our separator
+    return nums, len(lines[0].split()) + 1  # account for our separator
 
 def get_lines(grid, row_len, index, length):
     r"""

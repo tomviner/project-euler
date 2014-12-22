@@ -30,14 +30,19 @@ GRID = """\
 """
 import itertools
 
-from common import *
+from common import product
 
 def read_grid(grid_string):
-    r"""
-    >>> sorted(read_grid('11 12 13\n14 15 16\n17 18 19').items(), key=lambda xy_val:xy_val[0][::-1])
-    [((0, 0), 11), ((1, 0), 12), ((2, 0), 13), ((0, 1), 14), ((1, 1), 15), ((2, 1), 16), ((0, 2), 17), ((1, 2), 18), ((2, 2), 19)]
     """
-    return {(x, y):int(val) for y,row in enumerate(grid_string.splitlines()) for x,val in enumerate(row.strip().split())}
+    >>> sorted(read_grid('11 12 13\\n14 15 16\\n17 18 19').items(), key=lambda xy_val:xy_val[0][::-1])
+    [((0, 0), 11), ((1, 0), 12), ((2, 0), 13), ((0, 1), 14), ((1, 1), 15), \
+((2, 1), 16), ((0, 2), 17), ((1, 2), 18), ((2, 2), 19)]
+    """
+    return {
+        (x, y): int(val)
+        for y, row in enumerate(grid_string.splitlines())
+        for x, val in enumerate(row.strip().split())
+    }
 
 class ImpossibleLineError(ValueError):
     pass

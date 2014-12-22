@@ -7,7 +7,7 @@ import itertools
 
 from collections import Counter
 
-from common import *
+from common import prime_factors, product
 
 def divisible_by_range(x, n):
     """
