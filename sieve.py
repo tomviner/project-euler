@@ -7,7 +7,7 @@ def sieve(ns):
     """
     n = list(itertools.islice(ns, 1))[0]
     yield n
-    for item in filter(lambda x: x % n != 0, ns):
+    for item in [x for x in ns if x % n != 0]:
         yield item
 
 if __name__ == '__main__':

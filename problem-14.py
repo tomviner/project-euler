@@ -75,4 +75,4 @@ def smart_chain_len(n, cache={}):
 
 # if __name__ == '__main__':
 #     # takes just 21s on netbook, 3s on 4 core laptop
-    print(max(range(1, 1000000), key=smart_chain_len))
+    print(max(list(range(1, 1000000)), key=smart_chain_len))

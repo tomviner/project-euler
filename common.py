@@ -42,6 +42,7 @@ def primes(max_val=None, n=None):
     prime_gen = filter(is_prime, itertools.count(1))
     prime_gen = itertools.takewhile(
         lambda x: max_val is None or x <= max_val, prime_gen)
+
     return itertools.islice(prime_gen, n)
 
 def prime_factors(n):
@@ -61,7 +62,7 @@ def prime_factors(n):
         top = int(math.ceil(math.sqrt(left)))
         for i in primes(top + 1):
             if not left % i:
-                left = math.floor(left / i)
+                left = left // i
                 facs.append(i)
                 if left == 1:
                     break

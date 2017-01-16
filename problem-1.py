@@ -13,4 +13,4 @@ def find_sum(n):
     return sum(x for x in range(n) if not (x % 3 and x % 5))
 
 if __name__ == '__main__':
-    print((find_sum(1000)))
+    print(find_sum(1000))
