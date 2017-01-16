@@ -106,4 +106,4 @@ NUMBERS = """
 
 if __name__ == '__main__':
     total = sum(map(int, NUMBERS))
-    print str(total)[:10]
+    print(str(total)[:10])

@@ -18,10 +18,10 @@ def count_months(yr_min, yr_max):
     >>> sum(count_months(2013, 2013))
     2
     """
-    for yr in xrange(yr_min, yr_max+1):
-        for mn in xrange(1, 13):
+    for yr in range(yr_min, yr_max+1):
+        for mn in range(1, 13):
             d = datetime.date(yr, mn, 1)
             yield d.weekday() == 6
 
 if __name__ == '__main__':
-    print sum(count_months(1901, 2000))
+    print(sum(count_months(1901, 2000)))

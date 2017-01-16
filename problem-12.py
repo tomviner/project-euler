@@ -48,11 +48,11 @@ def gen_divisors(n):
         # we don't want to count perfect squares twice
         divs.append(sqrt)
 
-    for i in xrange(2, sqrt):
+    for i in range(2, sqrt):
         rem = n % i
         if not rem:
             yield i
-            divs.append(n / i)
+            divs.append(n // i)
     for i in reversed(divs):
         yield i
     yield n
@@ -71,7 +71,7 @@ def get_divisor_count(n):
     if sqrt > 1 and not n % sqrt:
         # we don't want to count perfect squares twice
         tot += 1
-    tot += sum(2 for i in xrange(2, sqrt) if not n % i)
+    tot += sum(2 for i in range(2, sqrt) if not n % i)
     return tot
 
 def get_divisor_count_pf(n):
@@ -82,7 +82,7 @@ def get_divisor_count_pf(n):
         return 1
     pfs = prime_factors(n)
     pfc = Counter(pfs)
-    num_divs = product(pow+1 for (base, pow) in pfc.items())
+    num_divs = product(pow+1 for (base, pow) in list(pfc.items()))
     return num_divs
 
 def first_triangle_by_factors(n):
@@ -121,4 +121,4 @@ def test_get_divisor_count_pf(n, expected):
 
 
 if __name__ == '__main__':
-    print first_triangle_by_factors(500)
+    print(first_triangle_by_factors(500))

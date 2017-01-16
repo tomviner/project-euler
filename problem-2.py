@@ -36,4 +36,4 @@ def even_fibs(limit):
             total += n
 
 if __name__ == '__main__':
-    print even_fibs(4000000)
+    print(even_fibs(4000000))

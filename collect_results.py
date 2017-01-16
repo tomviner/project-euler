@@ -12,4 +12,4 @@ if __name__ == '__main__':
             except OSError:
                 continue
             formatted_result = result.replace('\n', '\n\t')
-            print '{}\t{}'.format(n, formatted_result)
+            print('{}\t{}'.format(n, formatted_result))

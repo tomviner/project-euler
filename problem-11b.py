@@ -80,4 +80,4 @@ def get_line_products(grid, row_len, length=4):
 
 if __name__ == '__main__':
     grid, n = read_grid(GRID)
-    print max(get_line_products(grid, n))
+    print(max(get_line_products(grid, n)))

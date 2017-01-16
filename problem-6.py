@@ -16,14 +16,14 @@ def sum_of_squares(n):
     >>> sum_of_squares(10)
     385
     """
-    return sum(i**2 for i in xrange(1, n+1))
+    return sum(i**2 for i in range(1, n+1))
 
 def square_of_sum(n):
     """
     >>> square_of_sum(10)
     3025
     """
-    return sum(xrange(1, n+1))**2
+    return sum(range(1, n+1))**2
 
 def diff(n):
     """
@@ -33,4 +33,4 @@ def diff(n):
     return square_of_sum(n) - sum_of_squares(n)
 
 if __name__ == '__main__':
-    print diff(100)
+    print(diff(100))

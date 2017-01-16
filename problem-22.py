@@ -17,7 +17,7 @@ def score_word(word):
     >>> score_word('COLIN')
     53
     """
-    return sum(string.uppercase.index(letter)+1 for letter in word.upper())
+    return sum(string.ascii_uppercase.index(letter)+1 for letter in word.upper())
 
 def score_string(s):
     """
@@ -33,4 +33,4 @@ def score_string(s):
     )
 
 if __name__ == '__main__':
-    print score_string(open('p022_names.txt').read())
+    print(score_string(open('p022_names.txt').read()))

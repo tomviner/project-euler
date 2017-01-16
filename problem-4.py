@@ -16,7 +16,7 @@ def is_palindrome(n):
     False
     """
     s = str(n)
-    m = int(math.floor(len(s) / 2.0))
+    m = int(math.floor(len(s) // 2.0))
     # compare 1st half to reverse of 2nd half
     return s[:m] == s[:-m-1:-1]
 
@@ -40,4 +40,4 @@ def palindrome_products(digits):
             yield product
 
 if __name__ == '__main__':
-    print max(palindrome_products(3))
+    print(max(palindrome_products(3)))

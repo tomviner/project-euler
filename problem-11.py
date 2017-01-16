@@ -55,12 +55,12 @@ def get_line(grid, x, y, dx, dy, length):
     >>> list(get_line(grid, 2, 3, -1, -1, 4))
     Traceback (most recent call last):
         ...
-    ImpossibleLineError: (-1, 0)
+    problem-11.ImpossibleLineError: (-1, 0)
     """
     for i in range(length):
         try:
-            yield grid[(i*dx+x, i*dy+y)]
-        except KeyError, e:
+            yield grid[(i * dx + x, i * dy + y)]
+        except KeyError as e:
             raise ImpossibleLineError(e)
 
 
@@ -73,7 +73,7 @@ def get_line_products(grid, length=4):
     directions = itertools.product((-1, 0, 1), repeat=2)
     # but remove (0, 0)
     directions = [d for d in directions if d != (0, 0)]
-    for (x, y), val in grid.items():
+    for (x, y), val in list(grid.items()):
         for dx, dy in directions:
             try:
                 yield product(get_line(grid, x, y, dx, dy, length))
@@ -82,4 +82,4 @@ def get_line_products(grid, length=4):
 
 if __name__ == '__main__':
     grid = read_grid(GRID)
-    print max(get_line_products(grid))
+    print(max(get_line_products(grid)))

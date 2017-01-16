@@ -19,7 +19,7 @@ def moves(x, y, i=1):
     10
     """
     fac = math.factorial
-    return fac(x+y) / (fac(x) * fac(y))
+    return fac(x+y) // (fac(x) * fac(y))
 
 if __name__ == '__main__':
-    print moves(20, 20)
+    print(moves(20, 20))

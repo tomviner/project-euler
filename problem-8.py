@@ -33,14 +33,14 @@ def get_sub_strings(s, l):
     ['12345', '23456', '34567', '45678', '56789']
     """
     n = len(s)
-    return (s[i:i+l] for i in xrange(0, n-l+1))
+    return (s[i:i+l] for i in range(0, n-l+1))
 
 def largest_product(s, l):
     """
     >>> largest_product('123456781', 5)
     6720
     """
-    return max(product(map(int, list(sub))) for sub in get_sub_strings(s, l))
+    return max(product(list(map(int, list(sub)))) for sub in get_sub_strings(s, l))
 
 if __name__ == '__main__':
-    print largest_product(digit_string, 13)
+    print(largest_product(digit_string, 13))

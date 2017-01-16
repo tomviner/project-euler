@@ -15,7 +15,7 @@ def pyth_trips(max_val):
     >>> list(pyth_trips(5))
     [(3, 4, 5)]
     """
-    sides = itertools.combinations_with_replacement(range(1, max_val+1), 2)
+    sides = itertools.combinations_with_replacement(list(range(1, max_val+1)), 2)
     for a, b in sides:
         c = math.sqrt(a**2 + b**2)
         int_c = int(c)
@@ -25,4 +25,4 @@ def pyth_trips(max_val):
 if __name__ == '__main__':
     for a, b, c in pyth_trips(1000):
         if a + b + c == 1000:
-            print a * b * c
+            print(a * b * c)

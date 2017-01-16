@@ -10,7 +10,7 @@ def find_sum(n):
     >>> find_sum(10)
     23
     """
-    return sum(x for x in xrange(n) if not (x % 3 and x % 5))
+    return sum(x for x in range(n) if not (x % 3 and x % 5))
 
 if __name__ == '__main__':
-    print find_sum(1000)
+    print((find_sum(1000)))
