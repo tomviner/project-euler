@@ -1,1 +1,1 @@
-py.test --doctest-modules $@
+py.test --doctest-modules ${@:-*.py}

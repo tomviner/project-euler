@@ -24,6 +24,7 @@ import pytest
 
 def gen_triangle():
     """
+    >>> from itertools import islice
     >>> list(islice(gen_triangle(), 10))
     [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]
     """
@@ -82,7 +83,7 @@ def get_divisor_count_pf(n):
         return 1
     pfs = prime_factors(n)
     pfc = Counter(pfs)
-    num_divs = product(pow+1 for (base, pow) in list(pfc.items()))
+    num_divs = product(pow + 1 for (base, pow) in list(pfc.items()))
     return num_divs
 
 def first_triangle_by_factors(n):
