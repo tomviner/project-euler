@@ -12,5 +12,6 @@ def sum_of_primes(n):
     """
     return sum(primes(max_val=n))
 
+
 if __name__ == '__main__':
     print(sum_of_primes(2000000))

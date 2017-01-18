@@ -24,7 +24,7 @@ def collatz(n):
         if not n % 2:
             n = n // 2
         else:
-            n = 3*n + 1
+            n = 3 * n + 1
         yield n
 
 def chain_len(n):
@@ -73,6 +73,7 @@ def smart_chain_len(n, cache={}):
         cache[d] = i + 1
     return cache[n]
 
-# if __name__ == '__main__':
-#     # takes just 21s on netbook, 3s on 4 core laptop
+
+if __name__ == '__main__':
+    # takes just 21s on netbook, 3s on 4 core laptop
     print(max(list(range(1, 1000000)), key=smart_chain_len))
